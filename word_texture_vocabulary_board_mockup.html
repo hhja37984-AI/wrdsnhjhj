@@ -74,17 +74,17 @@
 
     .toolbar{
       display:grid;
-      grid-template-columns:minmax(240px,1.6fr) minmax(150px,.7fr) auto;
+      grid-template-columns:minmax(240px,1fr) minmax(150px,220px);
       gap:10px;padding:16px 24px;border-bottom:1px solid var(--line);
       background:#f8f5ec;
     }
-    .search,.select,.view-btn{
+    .search,.select{
       min-height:42px;border:1px solid var(--line);border-radius:9px;
       background:#f2f2f2;color:var(--ink);
     }
     .search{padding:0 14px}
     .select{padding:0 12px}
-    .view-btn{padding:0 14px;background:var(--paper);white-space:nowrap;font-size:12px;font-weight:600}
+    
 
     .content{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:680px}
     aside{border-right:1px solid var(--line);padding:20px 16px;background:#f3f0e7}
@@ -122,7 +122,7 @@
     .board{border:1px solid var(--line);border-radius:11px;overflow:hidden;background:var(--paper-2)}
     .row{
       display:grid;
-      grid-template-columns:minmax(170px,.9fr) minmax(240px,1.45fr) minmax(220px,1.15fr);
+      grid-template-columns:54px minmax(150px,.7fr) minmax(320px,2.3fr);
       align-items:stretch;border-top:1px solid var(--line-soft);
     }
     .row:first-child{border-top:0}
@@ -131,7 +131,7 @@
     .cell:first-child{border-left:0}
     .row.header .cell{padding-top:10px;padding-bottom:10px}
 
-    .word{display:flex;gap:10px;align-items:flex-start}
+    .word{display:flex;align-items:flex-start}.star-cell{display:grid;place-items:center;padding-left:8px!important;padding-right:8px!important}.notes-cell{display:grid;gap:5px}.notes-cell .meaning{font-size:11px;line-height:1.65;color:#385449}.notes-cell .note{font-size:10px;line-height:1.55;color:var(--muted)}
     .star{border:0;background:transparent;padding:0;margin-top:1px;color:#9aa59e;font-size:15px}
     .star.on{color:#9c8450}
     .word-open{
@@ -139,7 +139,7 @@
       min-width:0;color:inherit;
     }
     .word-open:hover strong{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
-    .word-main strong{display:block;font:italic 20px/1.1 var(--serif);font-weight:500;overflow-wrap:anywhere}
+    .word-main strong{display:block;font:600 14px/1.45 var(--sans);letter-spacing:-.1px;overflow-wrap:anywhere}
     .word-main small{display:block;margin-top:5px;color:var(--muted);font-size:9px}
     .meaning{font-size:11px;line-height:1.65;color:#385449}
     .tone-line{display:flex;flex-wrap:wrap;gap:5px}
@@ -240,23 +240,23 @@
       .app{border-radius:0;border:0;min-height:100vh}
       .content{grid-template-columns:1fr}
       aside{display:none}
-      .toolbar{grid-template-columns:1fr 1fr}
+      .toolbar{grid-template-columns:1fr 180px}
       .toolbar .search{grid-column:1/-1}
-      .row{grid-template-columns:minmax(150px,.9fr) minmax(220px,1.4fr) minmax(190px,1.1fr)}
+      .row{grid-template-columns:50px minmax(140px,.7fr) minmax(280px,2.1fr)}
       .summary{grid-template-columns:repeat(2,1fr)}
     }
     @media(max-width:640px){
       header{padding:19px 16px 15px}
       .brand strong{font-size:24px}
       .toolbar{padding:12px 16px;grid-template-columns:1fr 1fr}
-      .view-btn{grid-column:1/-1}
+      
       .main{padding:18px 14px 26px}
       .section-head{align-items:flex-start}
       h1{font-size:29px}
       .summary{grid-template-columns:1fr 1fr}
       .summary-card{min-height:68px;padding:11px 12px}
       .board{overflow-x:auto}
-      .row{min-width:620px}
+      .row{min-width:560px}
       .bottom-bar{padding:12px 16px 16px;align-items:flex-start;flex-direction:column}
       .detail-layer{padding:0;align-items:end}
       .detail-panel{
@@ -290,7 +290,6 @@
         <option>알파벳순</option>
         <option>자주 본 순</option>
       </select>
-      <button class="view-btn">Board view ▾</button>
     </section>
 
     <div class="content">
@@ -331,74 +330,94 @@
         </div>
 <section class="board">
           <div class="row header">
+            <div class="cell star-cell">☆</div>
             <div class="cell">WORD</div>
-            <div class="cell">CORE MEANING</div>
-            <div class="cell">NOTE</div>
+            <div class="cell">NOTES</div>
           </div>
 
           <div class="row">
+            <div class="cell star-cell">
+              <button class="star on" aria-label="즐겨찾기">★</button>
+            </div>
             <div class="cell">
               <div class="word">
-                <button class="star on" aria-label="즐겨찾기">★</button>
                 <button class="word-open" data-word="linger">
                   <span class="word-main"><strong>linger</strong></span>
                 </button>
               </div>
             </div>
-            <div class="cell meaning">쉽게 사라지거나 떠나지 않고 오래 남다. 시간적·감각적 잔류의 느낌.</div>
-            <div class="cell note">냄새·시선·감정처럼 물리적이지 않은 잔향에도 자연스러움.</div>
+            <div class="cell notes-cell">
+              <div class="meaning">쉽게 사라지거나 떠나지 않고 오래 남다. 시간적·감각적 잔류의 느낌.</div>
+              <div class="note">냄새·시선·감정처럼 물리적이지 않은 잔향에도 자연스러움.</div>
+            </div>
           </div>
 
           <div class="row">
+            <div class="cell star-cell">
+              <button class="star" aria-label="즐겨찾기">☆</button>
+            </div>
             <div class="cell">
               <div class="word">
-                <button class="star" aria-label="즐겨찾기">☆</button>
                 <button class="word-open" data-word="factor">
                   <span class="word-main"><strong>factor</strong></span>
                 </button>
               </div>
             </div>
-            <div class="cell meaning">결과에 영향을 주는 요인이나 고려 요소.</div>
-            <div class="cell note">분석적·설명적 문장에서 자연스럽고 감정적 색은 약함.</div>
+            <div class="cell notes-cell">
+              <div class="meaning">결과에 영향을 주는 요인이나 고려 요소.</div>
+              <div class="note">분석적·설명적 문장에서 자연스럽고 감정적 색은 약함.</div>
+            </div>
           </div>
 
           <div class="row">
+            <div class="cell star-cell">
+              <button class="star on" aria-label="즐겨찾기">★</button>
+            </div>
             <div class="cell">
               <div class="word">
-                <button class="star on" aria-label="즐겨찾기">★</button>
                 <button class="word-open" data-word="trace">
                   <span class="word-main"><strong>a trace of</strong></span>
                 </button>
               </div>
             </div>
-            <div class="cell meaning">아주 희미하게 남아 있는 기색, 흔적, 소량.</div>
-            <div class="cell note">표정·향·감정의 미세한 흔적 묘사에 특히 잘 맞음.</div>
+            <div class="cell notes-cell">
+              <div class="meaning">아주 희미하게 남아 있는 기색, 흔적, 소량.</div>
+              <div class="note">표정·향·감정의 미세한 흔적 묘사에 특히 잘 맞음.</div>
+            </div>
           </div>
 
           <div class="row">
+            <div class="cell star-cell">
+              <button class="star" aria-label="즐겨찾기">☆</button>
+            </div>
             <div class="cell">
               <div class="word">
-                <button class="star" aria-label="즐겨찾기">☆</button>
                 <button class="word-open" data-word="bristle">
                   <span class="word-main"><strong>bristle</strong></span>
                 </button>
               </div>
             </div>
-            <div class="cell meaning">털이 곤두서듯 긴장하거나 발끈하여 즉각적인 반응을 보이다.</div>
-            <div class="cell note">감정 반응을 몸의 반사처럼 보이게 하는 동적인 표현.</div>
+            <div class="cell notes-cell">
+              <div class="meaning">털이 곤두서듯 긴장하거나 발끈하여 즉각적인 반응을 보이다.</div>
+              <div class="note">감정 반응을 몸의 반사처럼 보이게 하는 동적인 표현.</div>
+            </div>
           </div>
 
           <div class="row">
+            <div class="cell star-cell">
+              <button class="star on" aria-label="즐겨찾기">★</button>
+            </div>
             <div class="cell">
               <div class="word">
-                <button class="star on" aria-label="즐겨찾기">★</button>
                 <button class="word-open" data-word="undercurrent">
                   <span class="word-main"><strong>undercurrent</strong></span>
                 </button>
               </div>
             </div>
-            <div class="cell meaning">겉으로 드러나지 않지만 상황 아래에서 흐르는 감정·분위기·경향.</div>
-            <div class="cell note">장면 전체의 숨은 긴장이나 정서를 설명할 때 유용.</div>
+            <div class="cell notes-cell">
+              <div class="meaning">겉으로 드러나지 않지만 상황 아래에서 흐르는 감정·분위기·경향.</div>
+              <div class="note">장면 전체의 숨은 긴장이나 정서를 설명할 때 유용.</div>
+            </div>
           </div>
         </section>
       </main>
