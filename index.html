@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f2e8">
+  <title>Word Texture</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="panel">
+  <header>
+    <div class="brand"><strong>Word Texture</strong></div>
+    <div class="header-actions">
+      <a class="icon" href="logs.html" aria-label="요청 로그" title="요청 로그">☰</a>
+      <a class="icon" href="settings.html" aria-label="API 설정" title="API 설정">⚙</a>
+    </div>
+  </header>
+
+  <form id="analyze-form">
+    <label for="term">단어 또는 구절</label>
+    <input id="term" placeholder="factor, linger, a trace of…" maxlength="180">
+
+    <div class="context-label">
+      <label for="context">주변 문장</label>
+      <button type="button" class="text-button">선택 부분 → 단어</button>
+    </div>
+    <textarea id="context" rows="3" placeholder="단어가 포함된 문장을 넣으면 문맥을 고려해 읽습니다. (선택)"></textarea>
+
+    <div class="submit-row">
+      <button type="button" class="primary">말의 결 읽기</button>
+    </div>
+  </form>
+
+  <iframe class="result-frame" src="result.html" title="뉘앙스 분석 결과"></iframe>
+
+  <footer><span class="dot"></span><span>현재 모델</span></footer>
+</main>
+</body>
+</html>
