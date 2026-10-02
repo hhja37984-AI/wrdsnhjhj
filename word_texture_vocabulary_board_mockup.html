@@ -74,7 +74,7 @@
 
     .toolbar{
       display:grid;
-      grid-template-columns:minmax(240px,1.6fr) minmax(150px,.7fr) minmax(150px,.7fr) auto;
+      grid-template-columns:minmax(240px,1.6fr) minmax(150px,.7fr) auto;
       gap:10px;padding:16px 24px;border-bottom:1px solid var(--line);
       background:#f8f5ec;
     }
@@ -103,7 +103,7 @@
     }
 
     .main{min-width:0;padding:22px 24px 30px}
-    .section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:16px}
+    .section-head{display:flex;align-items:center;justify-content:flex-end;gap:16px;margin-bottom:12px}
     .eyebrow{font-size:9px;font-weight:700;letter-spacing:1.7px;color:#78806f}
     h1{font:italic 34px/1.15 var(--serif);margin:5px 0 0;letter-spacing:-.8px}
     .count{font-size:11px;color:var(--muted);white-space:nowrap}
@@ -122,7 +122,7 @@
     .board{border:1px solid var(--line);border-radius:11px;overflow:hidden;background:var(--paper-2)}
     .row{
       display:grid;
-      grid-template-columns:minmax(150px,1.05fr) minmax(180px,1.45fr) minmax(130px,.8fr) minmax(130px,.85fr) 86px;
+      grid-template-columns:minmax(170px,.9fr) minmax(240px,1.45fr) minmax(220px,1.15fr);
       align-items:stretch;border-top:1px solid var(--line-soft);
     }
     .row:first-child{border-top:0}
@@ -158,7 +158,7 @@
     .dot.new{background:#7f9a76}
 
     .bottom-bar{
-      display:flex;justify-content:space-between;gap:12px;align-items:center;
+      display:flex;justify-content:flex-end;gap:12px;align-items:center;
       padding:14px 24px 18px;border-top:1px solid var(--line);color:var(--muted);font-size:9px;
     }
     .bottom-actions{display:flex;gap:8px}
@@ -242,8 +242,7 @@
       aside{display:none}
       .toolbar{grid-template-columns:1fr 1fr}
       .toolbar .search{grid-column:1/-1}
-      .row{grid-template-columns:minmax(130px,1fr) minmax(170px,1.3fr) minmax(110px,.8fr) 74px}
-      .row .cell:nth-child(4){display:none}
+      .row{grid-template-columns:minmax(150px,.9fr) minmax(220px,1.4fr) minmax(190px,1.1fr)}
       .summary{grid-template-columns:repeat(2,1fr)}
     }
     @media(max-width:640px){
@@ -257,7 +256,7 @@
       .summary{grid-template-columns:1fr 1fr}
       .summary-card{min-height:68px;padding:11px 12px}
       .board{overflow-x:auto}
-      .row{min-width:760px}
+      .row{min-width:620px}
       .bottom-bar{padding:12px 16px 16px;align-items:flex-start;flex-direction:column}
       .detail-layer{padding:0;align-items:end}
       .detail-panel{
@@ -276,7 +275,6 @@
     <header>
       <div class="brand">
         <strong>Word Texture</strong>
-        <small>VOCABULARY DATABASE</small>
       </div>
       <div class="header-actions">
         <button class="icon" aria-label="새 항목">＋</button>
@@ -291,12 +289,6 @@
         <option>최근 추가순</option>
         <option>알파벳순</option>
         <option>자주 본 순</option>
-      </select>
-      <select class="select" aria-label="필터">
-        <option>모든 결</option>
-        <option>literary</option>
-        <option>colloquial</option>
-        <option>dramatic</option>
       </select>
       <button class="view-btn">Board view ▾</button>
     </section>
@@ -334,25 +326,14 @@
         <div class="section-head">
           <div>
             <span class="eyebrow">WORD LIBRARY</span>
-            <h1>All words</h1>
           </div>
-          <span class="count">128 entries · static mock data</span>
+          <span class="count">128 entries</span>
         </div>
-
-        <section class="summary">
-          <div class="summary-card"><small>TOTAL WORDS</small><strong>128</strong></div>
-          <div class="summary-card"><small>STARRED</small><strong>18</strong></div>
-          <div class="summary-card"><small>NEED REVIEW</small><strong>11</strong></div>
-          <div class="summary-card"><small>THIS WEEK</small><strong>24</strong></div>
-        </section>
-
-        <section class="board">
+<section class="board">
           <div class="row header">
             <div class="cell">WORD</div>
             <div class="cell">CORE MEANING</div>
-            <div class="cell">TEXTURE</div>
             <div class="cell">NOTE</div>
-            <div class="cell">STATUS</div>
           </div>
 
           <div class="row">
@@ -360,14 +341,12 @@
               <div class="word">
                 <button class="star on" aria-label="즐겨찾기">★</button>
                 <button class="word-open" data-word="linger">
-                  <span class="word-main"><strong>linger</strong><small>verb · 4 notes</small></span>
+                  <span class="word-main"><strong>linger</strong></span>
                 </button>
               </div>
             </div>
             <div class="cell meaning">쉽게 사라지거나 떠나지 않고 오래 남다. 시간적·감각적 잔류의 느낌.</div>
-            <div class="cell"><div class="tone-line"><span class="pill lit">literary</span><span class="pill emo">wistful</span></div></div>
             <div class="cell note">냄새·시선·감정처럼 물리적이지 않은 잔향에도 자연스러움.</div>
-            <div class="cell"><div class="status"><span class="dot"></span>saved</div></div>
           </div>
 
           <div class="row">
@@ -375,14 +354,12 @@
               <div class="word">
                 <button class="star" aria-label="즐겨찾기">☆</button>
                 <button class="word-open" data-word="factor">
-                  <span class="word-main"><strong>factor</strong><small>noun · 2 notes</small></span>
+                  <span class="word-main"><strong>factor</strong></span>
                 </button>
               </div>
             </div>
             <div class="cell meaning">결과에 영향을 주는 요인이나 고려 요소.</div>
-            <div class="cell"><div class="tone-line"><span class="pill neutral">neutral</span><span class="pill">analytical</span></div></div>
             <div class="cell note">분석적·설명적 문장에서 자연스럽고 감정적 색은 약함.</div>
-            <div class="cell"><div class="status"><span class="dot review"></span>review</div></div>
           </div>
 
           <div class="row">
@@ -390,14 +367,12 @@
               <div class="word">
                 <button class="star on" aria-label="즐겨찾기">★</button>
                 <button class="word-open" data-word="trace">
-                  <span class="word-main"><strong>a trace of</strong><small>phrase · 5 notes</small></span>
+                  <span class="word-main"><strong>a trace of</strong></span>
                 </button>
               </div>
             </div>
             <div class="cell meaning">아주 희미하게 남아 있는 기색, 흔적, 소량.</div>
-            <div class="cell"><div class="tone-line"><span class="pill lit">literary</span><span class="pill">subtle</span></div></div>
             <div class="cell note">표정·향·감정의 미세한 흔적 묘사에 특히 잘 맞음.</div>
-            <div class="cell"><div class="status"><span class="dot new"></span>new</div></div>
           </div>
 
           <div class="row">
@@ -405,14 +380,12 @@
               <div class="word">
                 <button class="star" aria-label="즐겨찾기">☆</button>
                 <button class="word-open" data-word="bristle">
-                  <span class="word-main"><strong>bristle</strong><small>verb · 3 notes</small></span>
+                  <span class="word-main"><strong>bristle</strong></span>
                 </button>
               </div>
             </div>
             <div class="cell meaning">털이 곤두서듯 긴장하거나 발끈하여 즉각적인 반응을 보이다.</div>
-            <div class="cell"><div class="tone-line"><span class="pill emo">tense</span><span class="pill dark">physical</span></div></div>
             <div class="cell note">감정 반응을 몸의 반사처럼 보이게 하는 동적인 표현.</div>
-            <div class="cell"><div class="status"><span class="dot"></span>saved</div></div>
           </div>
 
           <div class="row">
@@ -420,21 +393,18 @@
               <div class="word">
                 <button class="star on" aria-label="즐겨찾기">★</button>
                 <button class="word-open" data-word="undercurrent">
-                  <span class="word-main"><strong>undercurrent</strong><small>noun · 6 notes</small></span>
+                  <span class="word-main"><strong>undercurrent</strong></span>
                 </button>
               </div>
             </div>
             <div class="cell meaning">겉으로 드러나지 않지만 상황 아래에서 흐르는 감정·분위기·경향.</div>
-            <div class="cell"><div class="tone-line"><span class="pill lit">literary</span><span class="pill dark">implicit</span></div></div>
             <div class="cell note">장면 전체의 숨은 긴장이나 정서를 설명할 때 유용.</div>
-            <div class="cell"><div class="status"><span class="dot review"></span>review</div></div>
           </div>
         </section>
       </main>
     </div>
 
     <div class="bottom-bar">
-      <span>Mockup only · no API / storage connection</span>
       <div class="bottom-actions">
         <button>Import</button>
         <button>Export</button>
